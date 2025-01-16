@@ -1,5 +1,5 @@
 /* General Styles */
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -148,12 +148,15 @@ section {
 .video-slide {
   position: absolute;
   width: 100%;
-  clip-path: circle(0% at 0 50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 1s ease;
 }
 
 .video-slide.active {
-  clip-path: circle(150% at 0 50%);
-  transition: 1s ease;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease, visibility 1s ease;
 }
 
 /* Media Queries */
@@ -216,7 +219,7 @@ section {
 
   /* Menu Button */
   .menu-btn {
-    background: url(media/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png)no-repeat;
+    background: url(media/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png) no-repeat;
     background-size: 30px;
     background-position: center;
     width: 40px;

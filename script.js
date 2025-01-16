@@ -21,13 +21,15 @@ function showSlide(index) {
 // Touch event handlers for swipe functionality
 function handleTouchStart(event) {
     startX = event.touches[0].clientX;
+    // Prevent default scrolling behavior on touch devices
+    event.preventDefault();
 }
 
 function handleTouchMove(event) {
     endX = event.touches[0].clientX;
 }
 
-function handleTouchEnd() {
+function handleTouchEnd(event) {
     if (startX > endX + 50) {
         // Swipe left - next slide
         currentIndex = (currentIndex + 1) % slides.length;
@@ -38,10 +40,10 @@ function handleTouchEnd() {
     showSlide(currentIndex);
 }
 
-// Attach touch events to the container or slides
+// Attach touch events to the home section container or slides
 const slider = document.querySelector(".home");
-slider.addEventListener("touchstart", handleTouchStart);
-slider.addEventListener("touchmove", handleTouchMove);
+slider.addEventListener("touchstart", handleTouchStart, { passive: false });
+slider.addEventListener("touchmove", handleTouchMove, { passive: false });
 slider.addEventListener("touchend", handleTouchEnd);
 
 // Initially show the first slide
